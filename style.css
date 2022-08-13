@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;1,400;1,500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+   
+}
+body{
+    background-color: rgb(51, 62, 99);
+}
+h1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+}
+.card-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    /* height: 800px; */
+    gap: 22px;
+    padding: 25px;
+}
+.cards{
+    
+    *border: 1px solid;
+    border-radius: 20px;
+    background-color:rgb(101, 67, 145);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 240px;
+    height: 380px;
+    
+    
+}
+.cards:hover{
+    transform: scale(1.1);
+}
+.cards1:hover{
+    transform: scale(1.1);
+}
+img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    width: 280px;
+    width: 200px;
+    border-radius: 20px;
+}
+.titulo{
+    *background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    width: 180px;
+    height: 50px;
+    color: #fff;
+}
+.ingre{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    align-items: center;
+    font-size: 17px;
+    color: #fff;
+
+}
+span{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-weight: 600;
+    padding: 5px;
+    font-size: 18px;
+    color: #fff;
+}
+.comprar{
+    background-color: #fff;
+    border: none;
+    width: 80px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    height:30px ;
+}
+.comprar:hover{
+    color: #fff;
+    background-color: salmon;
+}
+.cards1{
+    *border: 1px solid;
+    border-radius: 20px;
+    background-color:rgb(101, 67, 145);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 245px;
+    height: 410px;
+}
+input{
+    display: flex;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 5px;
+    width: 200px;
+    border: none;
+    
+}
+input::placeholder{
+    padding: 10px;
+}
+.filtro{
+    display: none;
+}
+@media  (max-width:580px) {
+    .card-container{
+        display: flex;
+        flex-direction: column;
+    }
+    h1{
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+    }
+    
+}
