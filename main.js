@@ -1,12 +1,14 @@
 
 const tiposPizza = [
+
     {
         id: 1,
         nombre: "Comun",
         img:'./pizza1.jpg',
         ingredientes: "jamon, queso",
         precio: 850,
-    },
+    }
+,
     {
         id: 2,
         nombre: "Especial",
@@ -38,72 +40,226 @@ const tiposPizza = [
     }
     
 ];
+// const renderPizza = (pizzas) => {
+//     const imageName = pizzas.pizza[0].img;
+//     return `<div class="cards">
+//     <img src="pizza1.jpg" alt="">
+//     <h2 class="titulo">Común</h2>
+//     <p class="ingre">Jamon y Queso</p>
+//     <span>$600</span>
+//     <button class="comprar">Comprar</button>
+// </div>
+// <div class="cards">
+//     <img src="pizza2esp.jpg" alt="">
+//     <h2 class="titulo">Especial</h2>
+//     <p class="ingre">
+//         Jamon, Queso, Huevo, Morrón
+//     </p>
+//     <span>$800</span>
+//     <button class="comprar">Comprar</button>
+// </div>
+// <div class="cards">
+//     <img src="pizza3medi.jpg" alt="">
+//     <h2 class="titulo">Mediterranea</h2>
+//     <p class="ingre">
+//         Queso, Rúcula, Jamno Crudo, Aceitunas negras
+//     </p>
+//     <span>$1200</span>
+//     <button class="comprar">Comprar</button>
+// </div>
+// <div class="cards">
+//     <img src="pizza4champi.jpg" alt="">
+//     <h2 class="titulo">Vegetariana</h2>
+//     <p class="ingre">
+//         Queso, Huevo, Champignones, Choclo, Tomate
+//     </p>
+//     <span>$1500</span>
+//     <button class="comprar">Comprar</button>
+// </div>
+// <div class="cards1">
+//     <img src="pizza5lomo.jpeg" alt="">
+//     <h2 class="titulo">Lomo-Pizza</h2>
+//     <p class="ingre">
+//         Jamón, Queso, Carne, Panceta, Tomate, Mayonesa, Cebolla
+//     </p>
+//     <span>$2000</span>
+//     <button class="comprar">Comprar</button>
+// </div> --><!-- <div class="cards">
+//         <img src="pizza1.jpg" alt="">
+//         <h2 class="titulo">Común</h2>
+//         <p class="ingre">Jamon y Queso</p>
+//         <span>$600</span>
+//         <button class="comprar">Comprar</button>
+//     </div>
+//     <div class="cards">
+//         <img src="pizza2esp.jpg" alt="">
+//         <h2 class="titulo">Especial</h2>
+//         <p class="ingre">
+//             Jamon, Queso, Huevo, Morrón
+//         </p>
+//         <span>$800</span>
+//         <button class="comprar">Comprar</button>
+//     </div>
+//     <div class="cards">
+//         <img src="pizza3medi.jpg" alt="">
+//         <h2 class="titulo">Mediterranea</h2>
+//         <p class="ingre">
+//             Queso, Rúcula, Jamno Crudo, Aceitunas negras
+//         </p>
+//         <span>$1200</span>
+//         <button class="comprar">Comprar</button>
+//     </div>
+//     <div class="cards">
+//         <img src="pizza4champi.jpg" alt="">
+//         <h2 class="titulo">Vegetariana</h2>
+//         <p class="ingre">
+//             Queso, Huevo, Champignones, Choclo, Tomate
+//         </p>
+//         <span>$1500</span>
+//         <button class="comprar">Comprar</button>
+//     </div>
+//     <div class="cards1">
+//         <img src="pizza5lomo.jpeg" alt="">
+//         <h2 class="titulo">Lomo-Pizza</h2>
+//         <p class="ingre">
+//             Jamón, Queso, Carne, Panceta, Tomate, Mayonesa, Cebolla
+//         </p>
+//         <span>$2000</span>
+//         <button class="comprar">Comprar</button>
+//     </div>`
+// }
 
+// const renderPizzaList = pizzaList =>{
+//     cardContainer.innerHTML = pizzaList.map(pizzas => renderPizza(pizzas))
+// }
+const search = document.getElementById('buscador')
+const boton = document.getElementById('btn');
+const filtrar = () =>{
 
+    cardContainer.innerHTML = ''
+    const texto = search.value.toLowerCase();
+    for (let pizza of tiposPizza){
+        let nombre = pizza.nombre.toLowerCase();
+        if(nombre.indexOf(texto) !== -1 ){
+            cardContainer.innerHTML += `
+            <div class="cards">
+            <img src="${pizza.img}" alt="">
+            <h2 class="titulo">${pizza.nombre}</h2>
+            <p class="ingre">${pizza.ingredientes}</p>
+            <span>$${pizza.precio}</span>
+            <button class="comprar">Comprar</button>
+        </div>
+            `
 
-
-document.addEventListener('keyup', e => {
-    if(e.target.matches('#buscador')){
-        document.querySelectorAll('.cards').forEach(piza =>{
-            piza.textContent.toLowerCase().includes(e.target.value.toLowerCase())
-            ?piza.classList.remove('filtro')
-            :piza.classList.add('filtro')
-        })
+        }else if(search === ''){
+            alert('Producto no disposible')
+        }
+    }
+    if(cardContainer.innerHTML === ''){
+        cardContainer.innerHTML += `
+        <p>Producto no encontrado</p>
+        `
+        
     }
 
-})
+};
+
+
+boton.addEventListener('click', filtrar)
+
+// function verError (error){
+//     const menError = document.createElement("p");
+//     menError.textContent = error;
+//     menError.classList.add("error")
+//     divError.appendChild(menError);
+// }
+
+// cardContainer.addEventListener('keyup', filtrar)
+// filtrar()
+
+
+// document.addEventListener('keyup', e => {
+//     if(e.target.matches('#buscador')){
+//         document.querySelectorAll('.cards').forEach(Pizza =>{
+//             Pizza.textContent.toLowerCase().includes(e.target.value.toLowerCase())
+//             ?Pizza.classList.remove('filtro')
+//             :Pizza.classList.add('filtro')
+//         })
+//     }
+
+// })
 
 const cardContainer = document.getElementById('card');
 
 
-function crearProducto(pizza){
-    const card = document.createElement('card');
-    card.innerHTML = `<div class="cards">
-    <img src="pizza1.jpg" alt="">
-    <h2 class="titulo">Común</h2>
-    <p class="ingre">Jamon y Queso</p>
-    <span>$600</span>
-    <button class="comprar">Comprar</button>
-</div>
-<div class="cards">
-    <img src="pizza2esp.jpg" alt="">
-    <h2 class="titulo">Especial</h2>
-    <p class="ingre">
-        Jamon, Queso, Huevo, Morrón
-    </p>
-    <span>$800</span>
-    <button class="comprar">Comprar</button>
-</div>
-<div class="cards">
-    <img src="pizza3medi.jpg" alt="">
-    <h2 class="titulo">Mediterranea</h2>
-    <p class="ingre">
-        Queso, Rúcula, Jamno Crudo, Aceitunas negras
-    </p>
-    <span>$1200</span>
-    <button class="comprar">Comprar</button>
-</div>
-<div class="cards">
-    <img src="pizza4champi.jpg" alt="">
-    <h2 class="titulo">Vegetariana</h2>
-    <p class="ingre">
-        Queso, Huevo, Champignones, Choclo, Tomate
-    </p>
-    <span>$1500</span>
-    <button class="comprar">Comprar</button>
-</div>
-<div class="cards1">
-    <img src="pizza5lomo.jpeg" alt="">
-    <h2 class="titulo">Lomo-Pizza</h2>
-    <p class="ingre">
-        Jamón, Queso, Carne, Panceta, Tomate, Mayonesa, Cebolla
-    </p>
-    <span>$2000</span>
-    <button class="comprar">Comprar</button>
-</div>`
+// function crearProducto(pizza){
+//     const card = document.createElement('card');
+//     card.innerHTML = `<div class="cards">
+//     <img src="pizza1.jpg" alt="">
+//     <h2 class="titulo">Común</h2>
+//     <p class="ingre">Jamon y Queso</p>
+//     <span>$600</span>
+//     <button class="comprar">Comprar</button>
+// </div>
+// <div class="cards">
+//     <img src="pizza2esp.jpg" alt="">
+//     <h2 class="titulo">Especial</h2>
+//     <p class="ingre">
+//         Jamon, Queso, Huevo, Morrón
+//     </p>
+//     <span>$800</span>
+//     <button class="comprar">Comprar</button>
+// </div>
+// <div class="cards">
+//     <img src="pizza3medi.jpg" alt="">
+//     <h2 class="titulo">Mediterranea</h2>
+//     <p class="ingre">
+//         Queso, Rúcula, Jamón Crudo, Aceitunas negras
+//     </p>
+//     <span>$1200</span>
+//     <button class="comprar">Comprar</button>
+// </div>
+// <div class="cards">
+//     <img src="pizza4champi.jpg" alt="">
+//     <h2 class="titulo">Vegetariana</h2>
+//     <p class="ingre">
+//         Queso, Huevo, Champignones, Choclo, Tomate
+//     </p>
+//     <span>$1500</span>
+//     <button class="comprar">Comprar</button>
+// </div>
+// <div class="cards1">
+//     <img src="pizza5lomo.jpeg" alt="">
+//     <h2 class="titulo">Lomo-Pizza</h2>
+//     <p class="ingre">
+//         Jamón, Queso, Carne, Panceta, Tomate, Mayonesa, Cebolla
+//     </p>
+//     <span>$2000</span>
+//     <button class="comprar">Comprar</button>
+// </div>`
 
-    cardContainer.appendChild(card)
-    card.classList.add('card-container')
-}
-crearProducto()
+//     cardContainer.appendChild(card)
+//     card.classList.add('card-container')
+//     // cardContainer.classList.remove('hidden')
+//     // cardContainer.classList.add('hidden')
 
+//     // // card.classList.remove('hidden')
+//     // card.classList.add('hidden')
+
+// }
+// crearProducto()
+
+// function showError(error) {
+//     const msgError = document.createElement("p");
+//     msgError.textContent = error;
+//     msgError.classList.add("error");
+//     cartList.appendChild(msgError);
+//     setTimeout(() => {
+//       msgError.remove();
+//     }, 2000);
+//   }
+//   showError()
+// const init = () => {
+
+// }
+// init()

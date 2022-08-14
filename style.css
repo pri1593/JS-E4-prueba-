@@ -26,7 +26,7 @@ h1{
     flex-direction: row;
     /* height: 800px; */
     gap: 22px;
-    padding: 25px;
+    padding: 30px;
 }
 .cards{
     
@@ -38,7 +38,7 @@ h1{
     justify-content: center;
     align-items: center;
     width: 240px;
-    height: 380px;
+    height: 430px;
     
     
 }
@@ -64,7 +64,7 @@ img{
     text-align: center;
     padding: 10px;
     width: 180px;
-    height: 50px;
+    height: 80px;
     color: #fff;
 }
 .ingre{
@@ -108,7 +108,7 @@ span{
     justify-content: center;
     align-items: center;
     width: 245px;
-    height: 410px;
+    height: 430px;
 }
 input{
     display: flex;
@@ -125,6 +125,64 @@ input::placeholder{
 .filtro{
     display: none;
 }
+*.hidden{
+    display: none;
+}
+#btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 65px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+#btn:hover{
+    background-color: indianred;
+    color: #000;
+    transform: scale(1.1);
+}
+/* .error{
+    color: #fff;
+} */
+p{
+    *background-color: rgb(74, 84, 141);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+
+}
+ul{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding:10px;
+    margin: 10px;
+    list-style: none;
+    gap: 30px;
+    color: #fff;
+    flex-direction: row;
+}
+ul:hover{
+    color: salmon;
+}
+.searched{
+    margin: 0 auto;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
 @media  (max-width:580px) {
     .card-container{
         display: flex;
@@ -133,7 +191,13 @@ input::placeholder{
     h1{
         display: flex;
         flex-direction: column;
-        width: 400px;
+        *width: 400px;
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
     }
     
 }
