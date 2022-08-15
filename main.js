@@ -40,6 +40,53 @@ const tiposPizza = [
     }
     
 ];
+
+const cardContainer = document.getElementById('card');
+const search = document.getElementById('buscador')
+const boton = document.getElementById('btn');
+
+const filtrar = () =>{
+
+    cardContainer.innerHTML = ''
+    const texto = search.value.toLowerCase();
+    for (let pizza of tiposPizza){
+        let nombre = pizza.nombre.toLowerCase();
+        if(nombre.indexOf(texto) !== -1 ){
+            cardContainer.innerHTML += `
+            <div class="cards">
+            <img src="${pizza.img}" alt="">
+            <h2 class="titulo">${pizza.nombre}</h2>
+            <p class="ingre">${pizza.ingredientes}</p>
+            <span>$${pizza.precio}</span>
+            <button class="comprar">Comprar</button>
+        </div>
+            `
+
+        }else if(search === ''){
+            alert('Producto no disposible')
+        }
+    }
+    if(cardContainer.innerHTML === ''){
+        cardContainer.innerHTML += `
+        <p>Producto no encontrado</p>
+        `
+        
+    }
+saveLocalStorage()
+};
+
+
+boton.addEventListener('click', filtrar);
+
+function saveLocalStorage(){
+    localStorage.setItem('variedades', JSON.stringify(tiposPizza));
+};
+
+
+
+// <------------------------------------------------------------------------------------------->
+
+// *Todos otros los miles de intentos 
 // const renderPizza = (pizzas) => {
 //     const imageName = pizzas.pizza[0].img;
 //     return `<div class="cards">
@@ -132,52 +179,6 @@ const tiposPizza = [
 // const renderPizzaList = pizzaList =>{
 //     cardContainer.innerHTML = pizzaList.map(pizzas => renderPizza(pizzas))
 // }
-const search = document.getElementById('buscador')
-const boton = document.getElementById('btn');
-const filtrar = () =>{
-
-    cardContainer.innerHTML = ''
-    const texto = search.value.toLowerCase();
-    for (let pizza of tiposPizza){
-        let nombre = pizza.nombre.toLowerCase();
-        if(nombre.indexOf(texto) !== -1 ){
-            cardContainer.innerHTML += `
-            <div class="cards">
-            <img src="${pizza.img}" alt="">
-            <h2 class="titulo">${pizza.nombre}</h2>
-            <p class="ingre">${pizza.ingredientes}</p>
-            <span>$${pizza.precio}</span>
-            <button class="comprar">Comprar</button>
-        </div>
-            `
-
-        }else if(search === ''){
-            alert('Producto no disposible')
-        }
-    }
-    if(cardContainer.innerHTML === ''){
-        cardContainer.innerHTML += `
-        <p>Producto no encontrado</p>
-        `
-        
-    }
-
-};
-
-
-boton.addEventListener('click', filtrar)
-
-// function verError (error){
-//     const menError = document.createElement("p");
-//     menError.textContent = error;
-//     menError.classList.add("error")
-//     divError.appendChild(menError);
-// }
-
-// cardContainer.addEventListener('keyup', filtrar)
-// filtrar()
-
-
 // document.addEventListener('keyup', e => {
 //     if(e.target.matches('#buscador')){
 //         document.querySelectorAll('.cards').forEach(Pizza =>{
@@ -188,8 +189,6 @@ boton.addEventListener('click', filtrar)
 //     }
 
 // })
-
-const cardContainer = document.getElementById('card');
 
 
 // function crearProducto(pizza){
